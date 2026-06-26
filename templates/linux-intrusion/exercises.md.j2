@@ -1,0 +1,133 @@
+# Linux Intrusion Investigation Exercises
+
+## Scenario
+
+You are a SOC analyst investigating suspicious activity on a Linux server.
+
+CyberRange Forge has generated simulated authentication logs and forensic artifacts for your investigation.
+
+No real intrusion has occurred. All evidence is safe, synthetic, and intended for defensive training.
+
+---
+
+# Exercise 1 – Authentication Review
+
+Review:
+
+```bash
+cat logs/auth.log
+```
+
+Answer the following:
+
+1. Which IP address generated the failed login attempts?
+2. Which usernames were targeted?
+3. Were any logins successful?
+4. Does the activity resemble a brute-force attack?
+5. What indicators support your conclusion?
+
+---
+
+# Exercise 2 – Persistence Investigation
+
+Review:
+
+```bash
+cat artifacts/suspicious_cron.txt
+```
+
+Questions:
+
+1. Why is the cron entry suspicious?
+2. Why is executing a script from `/tmp` considered risky?
+3. What persistence technique appears to be simulated?
+4. What containment steps would you recommend?
+
+---
+
+# Exercise 3 – Process Review
+
+Review:
+
+```bash
+cat artifacts/process_snapshot.txt
+```
+
+Questions:
+
+1. Which running process appears unusual?
+2. Which process deserves immediate investigation?
+3. Why is it suspicious?
+4. What additional evidence would you collect?
+
+---
+
+# Exercise 4 – Privileged Activity
+
+Search the authentication log:
+
+```bash
+grep shadow logs/auth.log
+```
+
+Questions:
+
+1. Which user attempted to access `/etc/shadow`?
+2. Why is this action considered high risk?
+3. Under what circumstances might this activity be legitimate?
+4. What additional logs or artifacts would you review?
+
+---
+
+# Exercise 5 – Detection Engineering
+
+Review:
+
+```bash
+cat detections/sigma-rule.yml
+```
+
+Answer:
+
+1. Which attack behaviors does the Sigma rule detect?
+2. Which MITRE ATT&CK techniques apply?
+3. What false positives could occur?
+4. How could the detection be improved?
+5. Would you add additional detection logic?
+
+---
+
+# Bonus Challenge
+
+Create your own Sigma rule capable of detecting:
+
+* Multiple failed SSH login attempts
+* Cron jobs executing from `/tmp`
+* Attempts to access `/etc/shadow`
+* Suspicious execution of hidden files
+
+Explain why each detection would be useful during a Linux incident investigation.
+
+---
+
+# Learning Objectives
+
+After completing this lab you should be able to:
+
+* Analyze Linux authentication logs
+* Recognize SSH brute-force activity
+* Identify persistence mechanisms
+* Review suspicious processes
+* Investigate privileged account activity
+* Extract indicators of compromise (IOCs)
+* Develop basic defensive detections using Sigma
+
+---
+
+# Safety Notice
+
+This lab contains only simulated logs and artifacts.
+
+No malware, exploitation, persistence, brute forcing, or privilege escalation is performed.
+
+The environment is designed exclusively for defensive cybersecurity training.

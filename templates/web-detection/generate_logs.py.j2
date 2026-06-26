@@ -1,0 +1,69 @@
+# ============================================================
+# Web Detection Log Generator
+# Creates safe simulated nginx access logs for investigation
+# ============================================================
+
+from pathlib import Path
+from datetime import datetime, timedelta
+import random
+
+LOG_DIR = Path("/logs")
+LOG_DIR.mkdir(exist_ok=True)
+
+normal_paths = [
+    "/",
+    "/index.html",
+    "/about",
+    "/contact",
+    "/products",
+    "/static/app.js",
+    "/static/style.css",
+]
+
+suspicious_paths = [
+    "/admin",
+    "/wp-admin",
+    "/phpmyadmin",
+    "/login.php?id=1' OR '1'='1",
+    "/../../../../etc/passwd",
+    "/search?q=<script>alert(1)</script>",
+    "/backup.zip",
+    "/.env",
+]
+
+normal_ips = [
+    "192.168.56.10",
+    "192.168.56.11",
+    "192.168.56.12",
+]
+
+suspicious_ip = "203.0.113.77"
+now = datetime.utcnow()
+lines = []
+
+for index in range(90):
+    timestamp = now - timedelta(minutes=random.randint(1, 300))
+    ip = random.choice(normal_ips)
+    path = random.choice(normal_paths)
+    status = random.choice([200, 200, 200, 304])
+    size = random.randint(250, 5000)
+
+    lines.append(
+        f'{ip} - - [{timestamp:%d/%b/%Y:%H:%M:%S +0000}] '
+        f'"GET {path} HTTP/1.1" {status} {size} "-" "Mozilla/5.0"'
+    )
+
+for path in suspicious_paths:
+    timestamp = now - timedelta(minutes=random.randint(1, 300))
+    status = random.choice([403, 404, 400])
+
+    lines.append(
+        f'{suspicious_ip} - - [{timestamp:%d/%b/%Y:%H:%M:%S +0000}] '
+        f'"GET {path} HTTP/1.1" {status} 128 "-" "curl/8.0"'
+    )
+
+random.shuffle(lines)
+
+(LOG_DIR / "access.log").write_text("\n".join(lines), encoding="utf-8")
+
+print("Generated simulated web access logs at /logs/access.log")

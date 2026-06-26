@@ -1,0 +1,68 @@
+from pathlib import Path
+from datetime import datetime, timedelta
+import random
+
+LOG_DIR = Path("/logs")
+ARTIFACT_DIR = Path("/artifacts")
+
+LOG_DIR.mkdir(exist_ok=True)
+ARTIFACT_DIR.mkdir(exist_ok=True)
+
+now = datetime.utcnow()
+
+users = ["alice", "bob", "charlie"]
+normal_ips = ["192.168.56.20", "192.168.56.21"]
+suspicious_ip = "203.0.113.88"
+
+auth_lines = []
+
+for i in range(50):
+    timestamp = now - timedelta(minutes=random.randint(1, 300))
+    user = random.choice(users)
+    ip = random.choice(normal_ips)
+
+    auth_lines.append(
+        f"{timestamp:%b %d %H:%M:%S} ubuntu sshd[12{i:02d}]: "
+        f"Accepted password for {user} from {ip} port {random.randint(40000, 60000)} ssh2"
+    )
+
+for i in range(25):
+    timestamp = now - timedelta(minutes=random.randint(1, 300))
+    user = random.choice(["root", "admin", "test", "oracle"])
+
+    auth_lines.append(
+        f"{timestamp:%b %d %H:%M:%S} ubuntu sshd[22{i:02d}]: "
+        f"Failed password for invalid user {user} from {suspicious_ip} "
+        f"port {random.randint(40000, 60000)} ssh2"
+    )
+
+auth_lines.append(
+    f"{now:%b %d %H:%M:%S} ubuntu CRON[3100]: "
+    "(root) CMD (/tmp/.update.sh)"
+)
+
+auth_lines.append(
+    f"{now:%b %d %H:%M:%S} ubuntu sudo: alice : "
+    "TTY=pts/0 ; PWD=/home/alice ; USER=root ; COMMAND=/bin/cat /etc/shadow"
+)
+
+random.shuffle(auth_lines)
+
+(LOG_DIR / "auth.log").write_text("\n".join(auth_lines), encoding="utf-8")
+
+(ARTIFACT_DIR / "suspicious_cron.txt").write_text(
+    "*/5 * * * * root /tmp/.update.sh\n",
+    encoding="utf-8"
+)
+
+(ARTIFACT_DIR / "process_snapshot.txt").write_text(
+    """USER       PID COMMAND
+root         1 /sbin/init
+root       404 sshd: /usr/sbin/sshd
+www-data   777 python3 -m http.server 8080
+root      1337 /tmp/.update.sh
+""",
+    encoding="utf-8"
+)
+
+print("Generated simulated Linux intrusion logs and artifacts.")

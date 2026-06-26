@@ -1,0 +1,6 @@
+flowchart LR
+    A[Browser] --> B[Nginx Web Server]
+    C[Log Generator] --> D[access.log]
+    B --> D
+    E[Analyst] --> D
+    E --> F[Sigma Detection Rule]

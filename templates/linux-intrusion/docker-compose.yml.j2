@@ -1,0 +1,17 @@
+services:
+  ubuntu-victim:
+    image: ubuntu:22.04
+    container_name: {{ lab_name }}-ubuntu-victim
+    command: sleep infinity
+    volumes:
+      - ./logs:/logs
+      - ./artifacts:/artifacts
+
+  log-generator:
+    image: python:3.11-slim
+    container_name: {{ lab_name }}-linux-log-generator
+    volumes:
+      - ./generate_linux_logs.py:/generate_linux_logs.py
+      - ./logs:/logs
+      - ./artifacts:/artifacts
+    command: python /generate_linux_logs.py

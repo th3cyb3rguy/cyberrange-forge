@@ -1,0 +1,65 @@
+# Lab Summary
+
+## Lab Information
+
+**Lab Name:** {{ lab_name }}
+
+**Template:** {{ lab_id }}
+
+**Difficulty:** {{ difficulty }}
+
+**Title:** {{ title }}
+
+---
+
+## Description
+
+{{ description }}
+
+---
+
+## Purpose
+
+This lab teaches Linux incident response using simulated authentication logs and forensic artifacts.
+
+Participants investigate authentication failures, suspicious persistence, privileged activity, and process execution before creating defensive detections.
+
+---
+
+## Generated Components
+
+{% for service in services %}
+- {{ service }}
+{% endfor %}
+
+---
+
+## Generated Evidence
+
+- Simulated SSH authentication log
+- Simulated cron persistence artifact
+- Simulated running process snapshot
+- Investigation exercises
+- Sigma detection example
+- Network diagram
+
+---
+
+## Learning Objectives
+
+After completing this lab, participants should be able to:
+
+- Identify SSH brute-force attempts
+- Investigate suspicious cron persistence
+- Analyze Linux process listings
+- Review privileged account activity
+- Extract indicators of compromise
+- Create defensive detections
+
+---
+
+## Safety Notice
+
+This lab generates only simulated text artifacts.
+
+No malware, exploitation, persistence, credential theft, brute forcing, or privilege escalation is performed.

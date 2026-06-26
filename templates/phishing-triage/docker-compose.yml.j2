@@ -1,0 +1,21 @@
+services:
+  mailhog:
+    image: mailhog/mailhog
+    container_name: {{ lab_name }}-mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+
+  analyst-workstation:
+    image: ubuntu:22.04
+    container_name: {{ lab_name }}-analyst
+    command: sleep infinity
+
+  email-seeder:
+    image: python:3.11-slim
+    container_name: {{ lab_name }}-email-seeder
+    depends_on:
+      - mailhog
+    volumes:
+      - ./seed_email.py:/seed_email.py
+    command: python /seed_email.py

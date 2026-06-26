@@ -1,0 +1,16 @@
+flowchart LR
+
+A[Log Generator]
+A --> B[auth.log]
+
+A --> C[suspicious_cron.txt]
+
+A --> D[process_snapshot.txt]
+
+B --> E[Security Analyst]
+
+C --> E
+
+D --> E
+
+E --> F[Sigma Detection Rule]

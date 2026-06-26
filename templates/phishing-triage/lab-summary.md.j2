@@ -1,0 +1,26 @@
+# Lab Summary
+
+Lab name: **{{ lab_name }}**
+
+Template: **{{ lab_id }}**
+
+Difficulty: **{{ difficulty }}**
+
+## Purpose
+
+This lab teaches safe phishing email triage using simulated content.
+
+## Components
+
+{% for service in services %}
+- {{ service }}
+{% endfor %}
+
+## Learning Outcomes
+
+By completing this lab, the learner should be able to:
+
+- Identify phishing indicators
+- Extract basic IOCs
+- Explain social engineering tactics
+- Draft a simple detection rule

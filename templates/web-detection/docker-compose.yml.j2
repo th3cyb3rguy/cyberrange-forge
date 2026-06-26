@@ -1,0 +1,17 @@
+services:
+  web-server:
+    image: nginx:alpine
+    container_name: {{ lab_name }}-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+      - ./logs:/var/log/nginx
+
+  log-generator:
+    image: python:3.11-slim
+    container_name: {{ lab_name }}-web-log-generator
+    volumes:
+      - ./generate_logs.py:/generate_logs.py
+      - ./logs:/logs
+    command: python /generate_logs.py

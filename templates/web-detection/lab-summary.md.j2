@@ -1,0 +1,80 @@
+# Lab Summary
+
+## Lab Information
+
+**Lab Name:** {{ lab_name }}
+
+**Template:** {{ lab_id }}
+
+**Difficulty:** {{ difficulty }}
+
+**Title:** {{ title }}
+
+---
+
+## Description
+
+{{ description }}
+
+---
+
+## Purpose
+
+This lab introduces defensive web log analysis using safe simulated HTTP traffic.
+
+Participants learn how to identify suspicious web requests, investigate common attack patterns, and create basic detection logic using Sigma-style rules.
+
+---
+
+## Generated Components
+
+### Infrastructure
+
+{% for service in services %}
+
+* {{ service }}
+  {% endfor %}
+
+### Artifacts
+
+* Simulated nginx access logs
+* Investigation exercises
+* Detection engineering challenges
+* Sigma detection examples
+* Network diagram
+
+---
+
+## Learning Objectives
+
+After completing this lab, participants should be able to:
+
+* Review web server access logs
+* Identify suspicious HTTP requests
+* Recognize common web attack patterns
+* Extract indicators of compromise
+* Develop basic detection logic
+* Improve defensive monitoring coverage
+
+---
+
+## Skills Practiced
+
+* Log Analysis
+* Threat Hunting
+* Detection Engineering
+* Incident Investigation
+* IOC Extraction
+* Web Security Fundamentals
+
+---
+
+## Safety Notice
+
+This lab contains simulated data only.
+
+No exploitation occurs.
+
+No vulnerable services are deployed.
+
+All suspicious activity is generated locally for educational and defensive training purposes.

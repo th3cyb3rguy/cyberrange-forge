@@ -1,0 +1,29 @@
+title: Suspicious Web Request Patterns
+id: 61f9c4fd-1ad0-4ac0-9c3c-owlsec-web
+status: experimental
+description: Detects suspicious web request patterns in simulated nginx access logs.
+author: {{ lab_name }}
+date: 2026/06/20
+logsource:
+  category: webserver
+detection:
+  suspicious_uri:
+    request|contains:
+      - "' OR '1'='1"
+      - "../"
+      - "<script>"
+      - "/wp-admin"
+      - "/phpmyadmin"
+      - "/.env"
+      - "/backup.zip"
+  suspicious_user_agent:
+    user_agent|contains:
+      - "curl"
+  condition: suspicious_uri or suspicious_user_agent
+falsepositives:
+  - Authorized vulnerability scanning
+  - Internal security testing
+level: medium
+tags:
+  - attack.initial_access
+  - attack.t1190

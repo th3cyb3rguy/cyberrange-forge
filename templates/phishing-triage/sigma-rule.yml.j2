@@ -1,0 +1,26 @@
+title: Suspicious Invoice-Themed Phishing Email
+id: 9b73d9c2-6e9d-4e51-a0f4-owlsec-demo
+status: experimental
+description: Detects suspicious invoice-themed phishing email language in simulated training data.
+author: {{ lab_name }}
+date: 2026/06/16
+logsource:
+  product: email
+detection:
+  selection_subject:
+    subject|contains:
+      - "invoice"
+      - "payment required"
+      - "account suspension"
+  selection_body:
+    body|contains:
+      - "review the attached invoice"
+      - "failure to respond"
+      - "login"
+  condition: selection_subject or selection_body
+falsepositives:
+  - Legitimate invoice notifications
+level: medium
+tags:
+  - attack.initial_access
+  - attack.t1566

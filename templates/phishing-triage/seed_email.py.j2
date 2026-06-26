@@ -1,0 +1,39 @@
+import smtplib
+import time
+from email.message import EmailMessage
+
+MAILHOG_HOST = "mailhog"
+MAILHOG_PORT = 1025
+
+msg = EmailMessage()
+msg["From"] = "billing-alerts@secure-invoice-example.test"
+msg["To"] = "employee@example.local"
+msg["Subject"] = "Urgent Invoice Payment Required"
+
+msg.set_content("""
+Hello,
+
+Please review the attached invoice immediately:
+
+http://invoice-update-example.test/login
+
+Failure to respond may result in account suspension.
+
+Regards,
+Billing Department
+
+Training note:
+This is a simulated phishing email for defensive education only.
+""")
+
+for attempt in range(10):
+    try:
+        with smtplib.SMTP(MAILHOG_HOST, MAILHOG_PORT) as smtp:
+            smtp.send_message(msg)
+        print("Seed phishing email sent to MailHog.")
+        break
+    except Exception as error:
+        print(f"MailHog not ready yet: {error}")
+        time.sleep(3)
+else:
+    raise SystemExit("Failed to seed email after 10 attempts.")
