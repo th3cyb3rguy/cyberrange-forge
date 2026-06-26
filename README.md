@@ -8,7 +8,10 @@ Instead of downloading large virtual machines or intentionally vulnerable system
 
 Every generated lab includes realistic artifacts, investigation exercises, documentation, Sigma detection examples, and Docker Compose files.
 
----
+![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)
+![Docker](https://img.shields.io/badge/Docker-powered-blue?style=for-the-badge&logo=docker)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey?style=for-the-badge)
 
 # Features
 
@@ -182,6 +185,6 @@ MIT License
 <hr>
 
 ## Support the Work
-Everything here is free. If it's helped you, consider buying me a coffee.
+Everything here is free. If it's helped you, consider supporting the work. Thank you.
 
 [![Support on Patreon](https://img.shields.io/badge/Support-Patreon-orange)](https://patreon.com/th3cyb3rguy)
