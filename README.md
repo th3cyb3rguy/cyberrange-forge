@@ -178,3 +178,10 @@ All concept, implementation, testing, and validation were completed manually.
 # License
 
 MIT License
+
+<hr>
+
+## Support the Work
+Everything here is free. If it's helped you, consider buying me a coffee.
+
+[![Support on Patreon](https://img.shields.io/badge/Support-Patreon-orange)](https://patreon.com/th3cyb3rguy)
