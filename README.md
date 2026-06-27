@@ -1,5 +1,11 @@
 # CyberRange Forge
 
+┌────────────────────────────────────────────────┐
+│┏━╸╻ ╻┏┓ ┏━╸┏━┓┏━┓┏━┓┏┓╻┏━╸┏━╸   ┏━╸┏━┓┏━┓┏━╸┏━╸│
+│┃  ┗┳┛┣┻┓┣╸ ┣┳┛┣┳┛┣━┫┃┗┫┃╺┓┣╸    ┣╸ ┃ ┃┣┳┛┃╺┓┣╸ │
+│┗━╸ ╹ ┗━┛┗━╸╹┗╸╹┗╸╹ ╹╹ ╹┗━┛┗━╸   ╹  ┗━┛╹┗╸┗━┛┗━╸│
+└────────────────────────────────────────────────┘
+
 > Generate realistic defensive cybersecurity labs in seconds.
 
 CyberRange Forge is a cross-platform, Docker-powered cybersecurity lab generator designed for defenders, students, educators, SOC analysts, and blue teams.
