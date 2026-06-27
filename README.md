@@ -1,12 +1,8 @@
 # CyberRange Forge
 
-```text
-┌────────────────────────────────────────────────┐
-│┏━╸╻ ╻┏┓ ┏━╸┏━┓┏━┓┏━┓┏┓╻┏━╸┏━╸   ┏━╸┏━┓┏━┓┏━╸┏━╸│
-│┃  ┗┳┛┣┻┓┣╸ ┣┳┛┣┳┛┣━┫┃┗┫┃╺┓┣╸    ┣╸ ┃ ┃┣┳┛┃╺┓┣╸ │
-│┗━╸ ╹ ┗━┛┗━╸╹┗╸╹┗╸╹ ╹╹ ╹┗━┛┗━╸   ╹  ┗━┛╹┗╸┗━┛┗━╸│
-└────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="assets/banner.jpg" alt="CyberRange Forge Banner" width="900">
+</p>
 
 > Generate realistic defensive cybersecurity labs in seconds.
 
