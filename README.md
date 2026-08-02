@@ -10,7 +10,8 @@ Instead of downloading large virtual machines or intentionally vulnerable system
 
 Every generated lab includes realistic artifacts, investigation exercises, documentation, Sigma detection examples, and Docker Compose files.
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue?style=for-the-badge&logo=python)
+![Version](https://img.shields.io/badge/Version-1.0.1-blue?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
 ![Docker](https://img.shields.io/badge/Docker-powered-blue?style=for-the-badge&logo=docker)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20macOS%20%7C%20Windows-lightgrey?style=for-the-badge)
@@ -28,8 +29,28 @@ Every generated lab includes realistic artifacts, investigation exercises, docum
 * YAML lab metadata
 * Export generated labs as ZIP archives
 * Rich CLI with validation checks
+* Friendly port-conflict warnings instead of raw Docker errors
+* Generated lab directories owned by you, not root
 
-# Included Labs
+# Current Release
+
+## Blue Team Labs
+
+✔ Phishing Triage
+✔ Web Detection
+✔ Linux Intrusion
+
+# Roadmap
+
+## Red Team Labs (Coming Soon)
+
+* Phishing Simulation
+* Web Application Assessment
+* Linux Post-Exploitation
+
+The next release, **v1.1.0**, will focus on a single addition: the first Red Team lab, **Web Application Assessment**. No other Red Team labs, Purple Team features, or scenario systems will ship until their own dedicated releases.
+
+# Current Blue Team Labs
 
 ## Phishing Triage Lab
 
@@ -109,6 +130,14 @@ Start the lab:
 cd output/demo
 docker compose up -d
 ```
+
+When you're finished with a lab, stop it before starting another:
+
+```bash
+docker compose down
+```
+
+Stopping labs prevents Docker port conflicts when launching another lab.
 
 # Example Workflow
 
